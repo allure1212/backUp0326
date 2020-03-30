@@ -11,6 +11,8 @@ import java.util.List;
 import com.kh.payment.model.dao.PaymentDao;
 import com.kh.payment.model.dao.PaymentDto;
 import com.kh.payment.model.vo.Payment;
+import com.kh.reserved.model.dao.ListOfReserved;
+import com.kh.reserved.model.vo.PageRequest;
 
 public class PaymentService {
 
@@ -56,6 +58,29 @@ public class PaymentService {
 		List<PaymentDto> pd = new PaymentDao().watchedMovie(conn, userNo);
 		close(conn);
 		return pd;
+	}
+
+	/** 4. 회원번호로 결제완료 총갯수 가져오기
+	 * @param userNo
+	 * @return
+	 */
+	public int countPaymentByUserNo(Integer userNo) {
+		Connection conn = getConnection();
+		int countPayment = new PaymentDao().countPaymentByUserNo(conn, userNo);
+		close(conn);
+		return countPayment;
+	}
+
+	/** 5. 회원정보+페이징 갯수에 맞춰 결제완료 정보 가져오기
+	 * @param userNo
+	 * @param pageRequest
+	 * @return
+	 */
+	public List<ListOfReserved> ListOfOnePayment(Integer userNo, PageRequest pageRequest) {
+		Connection conn = getConnection();
+		List<ListOfReserved> lop = new PaymentDao().ListOfOnePayment(conn, userNo, pageRequest);
+		close(conn);
+		return lop;
 	}
 
 }

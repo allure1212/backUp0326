@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.payment.model.service.PaymentService;
 import com.kh.reserved.model.dao.ListOfMemTypeDto;
 import com.kh.reserved.model.dao.ListOfReserved;
 import com.kh.reserved.model.dao.ReserveDao;
@@ -191,5 +192,7 @@ public class ReserveService {
 		close(conn);
 		return lor;
 	}
+
+
 	
 }
