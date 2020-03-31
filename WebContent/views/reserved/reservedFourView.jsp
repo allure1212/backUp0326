@@ -160,7 +160,7 @@
                     </table>
                     	<input type="hidden" name="sectionNo" value="${param.sectionNo}"/>
 						<input type="hidden" name="theaterNo" value="${param.theaterNo}"/>
-						<input type="hidden" name="movieNo" value="${param.movieNo}"/>
+						<input type="hidden" name="movieNo" value="${movieNo}"/>
 						<input type="hidden" name="screenNo" value="${param.screenNo}"/>
 						<input type="hidden" name="adultCost" value="${adultCost}"/>
 						<input type="hidden" name="youthCost" value="${youthCost}"/>
@@ -170,7 +170,7 @@
                     <div class="ticket_cost">
                     	<ul>
                     		<li>* 회원 등급 : ${loginMg.gradeCondition} (할인율 ${loginMg.gradeBenefit}%) *</li>
-                    		<li>관람인원: <a id="countNum">0</a> 명 / 선택된 좌석수: <a id="clickBox"> </a> 개</li>
+                    		<li>관람인원: <a id="countNum">0</a> 명 / 선택된 좌석수: <a id="clickBox">0</a> 개</li>
                     		<li>총 금액 : <a id="cost">0</a> 원</li>
                     	</ul>
                     </div>
@@ -195,7 +195,7 @@
     </div>
    
 <form id="form" action="${contextPath}/reservedOne.do" role="form" method="post">
-	<input type="hidden" name="screenNo" value="${param.screenNo}"/>
+	<input type="hidden" name="screenNo" value="${screenNo}"/>
 	<input type="hidden" name="totalCost" value=""/>
 </form>
     

@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Properties;
 
 import com.kh.payment.model.vo.Payment;
+import com.kh.reserved.model.dao.ListOfReserved;
+import com.kh.reserved.model.vo.PageRequest;
 
 public class PaymentDao {
 
@@ -129,6 +131,62 @@ public class PaymentDao {
 		
 		
 		return pd;
+	}
+
+	/** 4. 회원번호로 결제완료된 영화 총갯수 구하기
+	 * @param conn
+	 * @param userNo
+	 * @return
+	 */
+	public int countPaymentByUserNo(Connection conn, Integer userNo) {
+		int countPayment = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("countPaymentByUserNo");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			countPayment = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return countPayment;
+	}
+
+	/** 5. 회원정보+페이징 갯수에 맞춰 결제완료 정보 가져오기
+	 * @param conn
+	 * @param userNo
+	 * @param pageRequest
+	 * @return
+	 */
+	public List<ListOfReserved> ListOfOnePayment(Connection conn, Integer userNo, PageRequest pageRequest) {
+		List<ListOfReserved> lop = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("onePayment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, pageRequest.getOffset());
+			pstmt.setInt(3, pageRequest.getLimit());
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				lop.add(new ListOfReserved(rset.getInt("RESERVED_NO"), rset.getTimestamp("PAYMETN_DATE"),
+						rset.getString("T_NAME"), rset.getString("R_NAME"), rset.getString("TITLE"), 
+						rset.getInt("AGE_LIMIT"), rset.getTimestamp("SCREEN_DATE"), rset.getInt("PAYMENT_NO"),
+						rset.getInt("AMOUNT"), rset.getString("TYPE"),
+						rset.getInt("MEMBER_NO"), rset.getString("ID"), rset.getString("MODIFY_NAME")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return lop;
 	}
 
 }

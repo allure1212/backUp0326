@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.kh.member.model.vo.Member" %>
+<%
+	String msg = (String)request.getAttribute("msg");	
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
         * {
             vertical-align: baseline;
             margin: 0;
@@ -68,6 +73,7 @@
         }
         .modal-sizeS {
             width: 560px;
+            padding-top:150px;
         }
         
         
@@ -161,23 +167,15 @@
             font-weight: 500;
             line-height: 1.29;
         }
-        </style>
+</style>
 </head>
 <body>
 
 	<%@ include file="../common/menubar.jsp"%>
-
+    
             <div id="wrap">
         <section tabindex="0" class="modal modal-sizeS modal-findIdPw" id="modalFindIdPw" style="margin-left: -280px; display: block;">
-
-
-
-
-
-
-
-
-
+        
         <!-- modal -->
             <!-- head -->
             <div class="head">
@@ -188,22 +186,22 @@
             <div class="body">
                 <!-- login -->
                 <div class="formField login">
-                    <form name="idForm" id="idForm" method="post">
+                    <form name="idForm" action="<%=request.getContextPath()%>/findPwd.me" id="idForm" method="post">
                         <fieldset>
                             <legend>비밀번호 찾기</legend>
                             <h2 class="title">비밀번호 찾기</h2>
                             <div class="item">
-                                <input name="idName" title="이름" class="input" id="idName" type="text" placeholder="이름">
+                                <input name="pId" title="아이디" class="input" id="idUser" type="text" placeholder="아이디">
                             </div>
                             <div class="item">
-                                <input name="idEmail" title="아이디" class="input" id="idEmail" type="text" placeholder="아이디">
+                                <input name="pName" title="이름" class="input" id="idName" type="text" placeholder="이름">
                             </div>
                             <div class="item">
-                                <input name="idEmail" title="휴대폰번호" class="input" id="idEmail" type="text" placeholder="휴대폰번호">
+                                <input name="pPhone" title="휴대폰번호" class="input" id="idPhone" type="tel" placeholder="휴대폰번호">
                             </div>
                             <!-- btnWrap -->
                             <div class="btnWrap">
-                                <button class="button button-color01 block" id="idBtn" type="button">비밀번호 찾기</button>
+                                <button class="button button-color01 block" id="idBtn" type="submit">비밀번호 찾기</button>
                             </div>
                             <!-- //btnWrap -->
                         </fieldset>
@@ -212,6 +210,15 @@
                 </div>
         </section>
         </div>
-
+<script>
+	var msg = "<%=msg%>";
+	
+	$(function(){
+		if(msg != "null"){
+			alert("회원님의 비밀번호는 " + msg + "입니다.");
+		}
+	});
+	
+</script>
 </body>
-</html> 
+</html>

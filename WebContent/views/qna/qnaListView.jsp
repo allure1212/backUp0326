@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList, com.kh.qna.model.vo.*" %>
 <%
-	ArrayList<Qna> list = (ArrayList<Qna>)request.getAttribute("list");
+	ArrayList<Qna> list = (ArrayList<Qna>)request.getAttribute("qnaList");
 	
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 

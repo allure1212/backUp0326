@@ -2,13 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.kh.member.model.vo.Member" %>
 <%
-	String msg = (String)request.getAttribute("msg");	
+	String msg = (String)request.getAttribute("msg");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <style>
 * {
 	vertical-align: baseline;
@@ -27,11 +29,14 @@
 	font-family: "Noto Sans KR Light","Noto Sans CJK KR","Noto Sans KR",sans-serif;
 	font-weight: 300;
 }
+
+
 *, ::after, ::before {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
+
 a img, fieldset, img {
 	border: none;
 }
@@ -44,6 +49,7 @@ caption, legend {
 	clip: rect(1px, 1px, 1px, 1px);
 	clip: rect(1px, 1px, 1px, 1px);
 }
+
 body {
 	color: #666;
 	font-size: 16px;
@@ -52,6 +58,10 @@ body {
 	letter-spacing: -0.9px;
 	background-color: #fff;
 }
+
+
+
+
 .modal {
 	display: none;
 	position: absolute;
@@ -64,11 +74,20 @@ body {
 }
 .modal-sizeS {
 	width: 560px;
+	padding-top:150px;
 }
+
+
+
+
+
 .modal .head {
 	position: relative;
 	margin: -8px 0 40px;
 }
+
+
+
 .login .title {
 	color: #222;
 	font-family: "Noto Sans KR Medium","Noto Sans KR",sans-serif;
@@ -81,6 +100,7 @@ body {
 	margin-top: 10px;
 	padding: 0;
 }
+
 .formField .btnWrap {
 	margin-top: 10px;
 }
@@ -103,6 +123,7 @@ body {
 	line-height: 38px;
 	cursor: pointer;
 }
+
 .button-color01 {
 	border-color: #3086c9;
 	color: #fff;
@@ -111,6 +132,7 @@ body {
 :first-child.button {
 	margin-left: 0px;
 }
+
 .login .button {
 	height: 50px;
 	line-height: 50px;
@@ -131,10 +153,12 @@ input[type=email], input[type=number], input[type=password], input[type=tel], in
 	border: 1px solid #ddd;
 	color: #666;
 }
+
 .login .input {
 	width: 100%;
 	height: 50px;
 }
+
 .modal .head .title {
 	color: #000;
 	font-family: "Noto Sans KR Medium","Noto Sans KR",sans-serif;
@@ -147,7 +171,7 @@ input[type=email], input[type=number], input[type=password], input[type=tel], in
 <body>
 
 	<%@ include file="../common/menubar.jsp"%>
-
+	
 	<div id="wrap">
 <section tabindex="0" class="modal modal-sizeS modal-findIdPw" id="modalFindIdPw" style="margin-left: -280px; display: block;">
 
@@ -168,14 +192,14 @@ input[type=email], input[type=number], input[type=password], input[type=tel], in
 					<legend>아이디 찾기</legend>
 					<h2 class="title">아이디 찾기</h2>
 					<div class="item">
-						<input name="idName" title="이름" class="input" id="idName" type="text" placeholder="이름">
+						<input name="name" title="이름" class="input" id="idName" type="text" placeholder="이름" required>
 					</div>
 					<div class="item">
-						<input name="idEmail" title="이메일" class="input" id="idEmail" type="text" placeholder="이메일">
+						<input name="email" title="이메일" class="input" id="idEmail" type="text" placeholder="이메일" required>
 					</div>
 					<!-- btnWrap -->
 					<div class="btnWrap">
-						<button class="button button-color01 block" id="idBtn" type="submit">아이디 찾기</button>
+						<button class="button button-color01 block" id="idBtn" onclick="id_search()" type="submit">아이디 찾기</button>
 					</div>
 					<!-- //btnWrap -->
 				</fieldset>
@@ -184,5 +208,36 @@ input[type=email], input[type=number], input[type=password], input[type=tel], in
 	</div>
 </section>
 </div>
+
+<script>
+
+	$(function(){
+	
+	var msg = "<%=msg%>";
+	
+	if(msg != "null") {
+		alert('고객님의 아이디는 ' + msg + ' 입니다.');
+	}
+	
+});
+	
+	 function id_search() { 
+
+		  var frm = document.idForm;
+
+		  if (frm.name.value.length < 1) {
+		   alert("이름을 입력해주세요");
+		   return;
+		  }
+		  if (frm.email.value.length < 1) {
+		   alert("이메일을 입력해주세요");
+		   return;
+		  }
+		 
+		  }
+	
+</script>
+
+
 </body>
-</html> 
+</html>

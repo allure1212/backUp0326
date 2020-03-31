@@ -23,7 +23,7 @@
 <title>Insert title here</title>
 <style>
 		*{margin:0; padding:0;}
-        .layout { position: relative; padding:0 15px; width: 1000px; margin:0 auto;}
+        .layout { position: relative; padding:0 15px; width: 1000px; margin:0 auto; min-height:550px;}
         .listReserved table {font-size: 13px; margin-top:30px;}
         .listReserved table tr { height: 30px;}
         .listReserved table tbody tr:hover { cursor: pointer; background: lightpink;}

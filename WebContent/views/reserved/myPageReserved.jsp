@@ -59,7 +59,7 @@
                 	</tr>
                 	<% } %>
                 	<tr>
-                		<td colspan="2">예매정보가 더이상 없습니다.</td>
+                		<td colspan="2" style="padding-top:20px;">예매정보가 더이상 없습니다.</td>
                 	</tr>
                 <% } %>
             </table>
