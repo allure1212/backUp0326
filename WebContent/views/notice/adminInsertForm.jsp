@@ -49,17 +49,15 @@
 	<%@ include file="../common/adminMenubar.jsp" %>
 	<div class="outer">
 		<form action="<%= request.getContextPath()%>/adminInsert.no" method="POST">
-		<fieldset style="width:1200px;height:700px;">
-			<legend><h2>공지사항 작성</h2></legend>
-			<table style="border-collapse:collapse;width: 1100px;margin-left: 50px;margin-top:50px">
-				<tr style="border-bottom:2px solid darkgray;">
-					<th width="10%" style="background:gray;height:50px;">글번호</th>
-					<th width="40%" style="border-top:2px solid darkgray;">구분</th>
-					<th width="40%" style="background:gray;border-right:2px solid darkgray;">작성 날짜</th>
+			<table style="border-collapse:collapse">
+				<tr>
+					<th width="10%" style="background:gray;">글번호</th>
+					<th width="40%">구분</th>
+					<th width="40%" style="background:gray;">작성 날짜</th>
 					<th width="10%" style="background:gray;">조회수</th>
 				</tr>
 				<tr class="content">
-					<td style="background:gray;"></td>
+					<td></td>
 					<td>
 						<select name="noticeType" style="height:32px">
 						    <option value="구분">구분선택</option>
@@ -69,15 +67,15 @@
 						    <option value="기타">기타</option>
 						</select>
 					</td>
-					<td style="background:gray;border-right:2px solid darkgray;"></td>
-					<td style="background:gray;"></td>
+					<td></td>
+					<td></td>
 				</tr>
 				<tr>
-					<th style="height:50px;">제목</th>
-					<td colspan="3" style="height:50px"><input type="text" name="noticeTitle"></td>
+					<th>제목</th>
+					<td colspan="3"><input type="text" name="noticeTitle"></td>
 				</tr>
 				<tr>
-					<th style="border-bottom:2px solid darkgray;border-top:2px solid darkgray;">내용</th>
+					<th>내용</th>
 					<td colspan="4">
 						<p><input type="text" name="noticeContent" class="content" style="height: 300px;margin:0;"></p>
 						
@@ -85,11 +83,10 @@
 				</tr>
 			</table>
 			<br>
-			<div class="btns" align="center">
-				<button id="submit" type="submit" style="width:64px;height:34px;border-radius:5px;">등록</button>
-				<button id="cancle" type="button" style="width:64px;height:34px;border-radius:5px;">취소</button>
+			<div class="btns" align="right">
+				<button id="submit" type="submit">등록</button>
+				<button id="cancle" type="button">취소</button>
 			</div>
-			</fieldset>
 		</form>
 	</div>
 	

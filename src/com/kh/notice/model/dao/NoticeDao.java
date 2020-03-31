@@ -78,8 +78,7 @@ public class NoticeDao {
 				list.add(new Notice(rset.getInt("notice_no"),
 									rset.getString("notice_type"),
 									rset.getString("notice_title"),
-									rset.getDate("notice_date"),
-									rset.getString("status")));
+									rset.getDate("notice_date")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

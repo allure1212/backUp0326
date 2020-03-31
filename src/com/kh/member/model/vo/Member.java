@@ -129,9 +129,8 @@ public class Member {
 	 * @param gender
 	 * @param signupDate
 	 * @param status
-	 * @param blackStatus
 	 */
-	public Member(int memberNo, String id, String name, String grade, String gender, Date signupDate, String status, String blackStatus) {
+	public Member(int memberNo, String id, String name, String grade, String gender, Date signupDate, String status) {
 		super();
 		this.memberNo = memberNo;
 		this.id = id;
@@ -140,7 +139,6 @@ public class Member {
 		this.gender = gender;
 		this.signupDate = signupDate;
 		this.status = status;
-		this.blackStatus = blackStatus;
 	}
 
 	/** 관리자 회원 상세보기

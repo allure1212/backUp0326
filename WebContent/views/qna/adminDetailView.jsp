@@ -72,7 +72,7 @@
 <body>
 	<%@ include file="../common/adminMenubar.jsp" %>
 	<div class="outer">
-		<table style="border-collapse:collapse;height: 800px;">
+		<table style="border-collapse:collapse">
 			<tr>
 				<th>번호</th>
 				<td class="content"><%=q.getQnaNo() %></td>
@@ -93,24 +93,24 @@
 			</tr>
 			<tr>
 				<td colspan="6">
-					<p style="width: 900px; margin-left: 59px;"><%=q.getContent() %></p>
+					<p><%=q.getContent() %></p>
 				</td>
 			</tr>
 		</table>
 		
-		<div class="btns" align="right" style="border-radius:5px;">
+		<div class="btns" align="right">
 			<%if(q.getReplyStatus().equals("N")) {%>
-			<button type="button" id="reply" style="border-radius:5px;">답변하기</button>
+			<button type="button" id="reply">답변하기</button>
 			<%}else{ %>
-			<button type="button" id="reply" style="border-radius:5px;">답변보기</button>
+			<button type="button" id="reply">답변보기</button>
 			<%} %>
-			<button type="button" onclick="history.back(-1);" style="border-radius:5px;">뒤로가기</button>
+			<button type="button" onclick="history.back(-1);">뒤로가기</button>
 		</div>
 		
 		<form action="<%=request.getContextPath()%>/reply.qa" method="POST">
 			<div id="modal">
 	   
-			    <div class="modal_content" style="margin-top: -50%; width: 824px; height: 444px;">
+			    <div class="modal_content" style="margin-top: -40%; width: 824px; height: 444px;">
 			    	<%if(q.getReplyStatus().equals("N")) {%>
 				        <h2>답변하기</h2>
 					        <textarea name="replyContent" style="margin: 0px; width: 787px; height: 343px; resize:none;" placeholder="답변을 입력해주세요." id="replyAnswer"></textarea>

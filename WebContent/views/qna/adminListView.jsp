@@ -29,9 +29,7 @@
 		width:100%;
 		border-top:2px solid gray;
 		margin-top:2.5px;
-		border-collapse: collapse;
 	}
-	td{border-bottom: 1px solid gray;}
 	.listArea>tbody{
 		font-size:15px;
 	}
@@ -42,11 +40,6 @@
 	.listArea>tbody>tr:hover{
 		cursor:pointer;
 	}
-	.pagingArea>button{
-		width:30px;
-		height:30px;
-		text-weight:bold;
-	}
 </style>
 </head>
 <body>
@@ -54,22 +47,21 @@
 	<div class="outer">
 		<h2 align="left">1:1문의</h2>
 		<div align="right">
-			<button id="allBtn" onclick="replyAll();" type="button" style="border-radius:5px;">전체 보기</button>
-			<button id="noBtn" onclick="replyNo();" type="button" style="border-radius:5px;">답변미완료 보기</button>
+			<button onclick="replyAll();" type="button">전체 보기</button>
+			<button onclick="replyNo();" type="button">답변미완료 보기</button>
 		</div>
 		<table class="listArea">
 			<thead>
 				<th width="5%">번호</th>
-				<th width="13%">구분</th>
+				<th width="20%">구분</th>
 				<th width="7%">종류</th>
-				<th width="50%">제목</th>
-				<th width="10">작성일</th>
+				<th width="53%">제목</th>
 				<th width="15%">답변여부</th>
 			</thead>
 			<tbody id="all">
 				<% if(list.isEmpty()){ %>
 				<tr>
-					<td colspan="6">조회된 리스트가 없습니다.</td>
+					<td colspan="5">조회된 리스트가 없습니다.</td>
 				</tr>
 				<% }else{ %>
 					<% for(Qna q : list){ %>
@@ -78,7 +70,6 @@
 						<td><%= q.getType() %></td>
 						<td><%= q.getKind() %></td>
 						<td><%= q.getTitle() %></td>
-						<td><%= q.getRegDate() %></td>
 						<td>
 							<%if(q.getReplyStatus().equals("Y")) {%>
 								답변완료
@@ -94,7 +85,7 @@
 			<tbody id="no" style="display:none;">
 				<% if(list.isEmpty()){ %>
 				<tr>
-					<td colspan="6">조회된 리스트가 없습니다.</td>
+					<td colspan="5">조회된 리스트가 없습니다.</td>
 				</tr>
 				<% }else{ %>
 					<% for(Qna q : list){ %>
@@ -104,7 +95,6 @@
 								<td><%= q.getType() %></td>
 								<td><%= q.getKind() %></td>
 								<td><%= q.getTitle() %></td>
-								<td><%= q.getRegDate() %></td>
 								<td>답변미완료</td>
 							</tr>
 						<%} %>
@@ -159,16 +149,12 @@
 		
 		function replyAll(){
 			$("#all").css("display","");
-			$("#allBtn").css("background","gray");	
 			$("#no").css("display","none");
-			$("#noBtn").css("background","white");
 		}
 		
 		function replyNo(){
 			$("#all").css("display","none");
-			$("#allBtn").css("background","white");
 			$("#no").css("display","");
-			$("#noBtn").css("background","gray");
 		}
 	</script>
 </body>

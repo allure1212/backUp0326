@@ -40,7 +40,7 @@ public class QnaReplyServlet extends HttpServlet {
 		int result = new QnaService().replyQna(q);
 		
 		if(result > 0) {
-			response.sendRedirect("adminDetail.qa?qnaNo=" + qnaNo);
+			response.sendRedirect("adminDetail.qa");
 		}else {
 			request.setAttribute("msg", "1:1문의 답변 실패");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

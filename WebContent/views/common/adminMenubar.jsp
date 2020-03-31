@@ -32,11 +32,13 @@
         width: 100%;
         height: 100px;
         background:rgb(44,44,44);
+      
     }
     #mode{
         float: right;
         font-size: 20px;
     }
+
     #body{
         width: 100%;
         height: 88%;
@@ -91,11 +93,8 @@
 
     <div id="top">
          <div>
-         	<img id="logoHome" src="<%=request.getContextPath() %>/resources/images/p_logo.png" width=200px;>
-         		<img id="adminPage" src="<%=request.getContextPath() %>/resources/images/adminPage.png" style="margin-left: 1250px;margin-bottom:5px;">
-         		<div id="mode">
-         			<h1 style="color: rgb(243, 243, 243);margin-top: 15px;margin-right: 15px;">관리자 모드</h1>
-         		</div>
+         	<img id="logoHome" src="<%=request.getContextPath() %>/resources/images/p_logo.png" width=200px;">
+         		<div id="mode">관리자 모드</div>
          </div>
          
     </div>
@@ -200,6 +199,7 @@
             <button class="listBtn">회원관리</button>
             <div class="menu">
                 <label onclick="goAdminList();">회원 리스트</label><br>
+                <label>블랙 리스트</label><br>
                 
             </div>
             
@@ -213,8 +213,17 @@
                 <label class="detail" onclick="goQna();">1:1 문의</label><br>
                 <label class="detail" onclick="goFaq();">FAQ</label><br>
                 <label class="detail" onclick="goNotice();">공지사항</label><br>
+                <label class="detail" onclick="goReview();">리뷰</label><br>
                 <label class="detail" onclick="goBorrowRoom();">대관문의</label><br>
-                <label class="detail" onclick="goLostarticle();">분실물문의</label><br>
+                <label class="detail" onclick="goLostarticle();">분실물관리</label><br>
+            </div>
+            <button class="listBtn">통계관리</button>
+            <div class="menu">
+                <label>방문자 통게</label><br>
+                <label>장르별 영화예매 통계</label><br>
+                <label>성별 영화 예매 통계</label><br>
+                <label>나이별 영화 예매 통계</label><br>
+                <label>매출 통계</label>
             </div>
             
 
@@ -242,7 +251,7 @@
 
                 $("label").on("click",function(){
                     $(this).css("backgroundColor","gray").css("color","white");
-                    $(this).siblings().css("color","white");
+                    $(this).siblings().css("backgroundColor","white").css("color","black");
                     
 
                 });

@@ -88,7 +88,6 @@ public class QnaDao {
 								 rset.getString("type"),
 								 rset.getString("kind"),
 								 rset.getString("title"),
-								 rset.getDate("reg_date"),
 								 rset.getString("reply_status")));
 			}
 			

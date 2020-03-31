@@ -29,9 +29,7 @@
 		width:100%;
 		border-top:2px solid gray;
 		margin-top:3.5px;
-		border-collapse: collapse;
 	}
-	td{border-bottom: 1px solid gray;}
 	.listArea>tbody{
 		font-size:15px;
 	}
@@ -42,18 +40,13 @@
 	.listArea>tbody>tr:hover{
 		cursor:pointer;
 	}
-	.pagingArea>button{
-		width:30px;
-		height:30px;
-		text-weight:bold;
-	}
 </style>
 </head>
 <body>
 	<%@ include file="../common/adminMenubar.jsp" %>
 	<div class="outer">
 		<h2 align="left">공지사항</h2>
-		<button onclick="location.href='<%= request.getContextPath()%>/adminInsertForm.no'" style="margin-left:89%;border-radius:5px;">공지글 작성</button>
+		<button onclick="location.href='<%= request.getContextPath()%>/adminInsertForm.no'" style="margin-left:89%">공지글 작성</button>
 		<table class="listArea">
 			<thead>
 				<th width="10%">글번호</th>
@@ -68,14 +61,12 @@
 				</tr>
 				<% }else{ %>
 					<% for(Notice n : list){ %>
-						<%if(n.getStatus().equals("Y")){ %>
-							<tr>
-								<td><%= n.getNoticeNo() %></td>
-								<td><%= n.getNoticeType() %></td>
-								<td><%= n.getNoticeTitle() %></td>
-								<td><%= n.getNoticeDate() %></td>
-							</tr>
-						<%} %>
+					<tr>
+						<td><%= n.getNoticeNo() %></td>
+						<td><%= n.getNoticeType() %></td>
+						<td><%= n.getNoticeTitle() %></td>
+						<td><%= n.getNoticeDate() %></td>
+					</tr>
 					<% } %>	
 				<% } %>
 			</tbody>

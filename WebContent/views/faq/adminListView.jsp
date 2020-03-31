@@ -28,10 +28,8 @@
 	.listArea{
 		width:100%;
 		border-top:2px solid gray;
-		margin-top:2.5px;
-		border-collapse: collapse;
+		margin-top:3.5px;
 	}
-	td{border-bottom: 1px solid gray;}
 	.listArea>tbody{
 		font-size:15px;
 	}
@@ -42,11 +40,6 @@
 	.listArea>tbody>tr:hover{
 		cursor:pointer;
 	}
-	.pagingArea>button{
-		width:30px;
-		height:30px;
-		text-weight:bold;
-	}
 </style>
 </head>
 <body>
@@ -54,7 +47,7 @@
 	<%@ include file="../common/adminMenubar.jsp" %>
 	<div class="outer">
 		<h2 align="left">Faq</h2>
-		<button onclick="location.href='<%= request.getContextPath()%>/adminInsertForm.fq'" style="margin-left:94%;border-radius:5px;">Faq 작성</button>
+		<button onclick="location.href='<%= request.getContextPath()%>/adminInsertForm.fq'" style="margin-left:94%">Faq 작성</button>
 		<table class="listArea">
 			<thead>
 				<th width="10%">글번호</th>
@@ -68,13 +61,11 @@
 				</tr>
 				<% }else{ %>
 					<% for(Faq f : list){ %>
-						<%if(f.getStatus().equals("Y")){ %>
-							<tr>
-								<td><%= f.getFaqNo() %></td>
-								<td><%= f.getType() %></td>
-								<td><%= f.getQuestion() %></td>
-							</tr>
-						<%} %>
+					<tr>
+						<td><%= f.getFaqNo() %></td>
+						<td><%= f.getType() %></td>
+						<td><%= f.getQuestion() %></td>
+					</tr>
 					<% } %>	
 				<% } %>
 			</tbody>

@@ -40,7 +40,7 @@ public class LostarticleReplyServlet extends HttpServlet {
 		int result = new LostarticleService().replyLost(l);
 		
 		if(result > 0) {
-			response.sendRedirect("adminDetail.lo?lostNo=" + lostNo);
+			response.sendRedirect("adminDetail.lo");
 		}else {
 			request.setAttribute("msg", "분실문 문의 답변 실패");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

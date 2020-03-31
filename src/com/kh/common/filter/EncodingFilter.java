@@ -8,7 +8,6 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -32,7 +31,7 @@ import javax.servlet.http.HttpServletRequest;
  *    > web.xml에 이 필터클래스를 등록하고 어떤 서블릿이 실행되기 전에 이필터를 거쳐갈건지 지정하는 방법
  * 
  */
-@WebFilter(filterName="encodingFilter", urlPatterns="/*")
+//@WebFilter(filterName="encodingFilter", urlPatterns="/*")
 public class EncodingFilter implements Filter {
 
     /**

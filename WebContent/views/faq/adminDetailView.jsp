@@ -55,8 +55,8 @@
 		</table>
 		
 		<div class="btns" align="right">
-			<button id="delete" type="button" style="border-radius:5px;">삭제</button>
-			<button type="button" onclick="history.back(-1);" style="border-radius:5px;">뒤로가기</button>
+			<button id="delete" type="button">삭제</button>
+			<button type="button" onclick="history.back(-1);">뒤로가기</button>
 		</div>
 	</div>
 	

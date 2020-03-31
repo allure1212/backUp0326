@@ -22,8 +22,8 @@ public class Notice {
    /* REFERENCE */
    private int reference;
    
-   /* STATUS */
-   private String status;
+   /* NOTICE_STATUS */
+   private String noticeStatus;
    
    public Notice() {
 	   
@@ -31,7 +31,7 @@ public class Notice {
    
 
 	public Notice(int noticeNo, String noticeType, String noticeTitle, String noticeContent, Date noticeDate, int reference,
-		String status) {
+		String noticeStatus) {
 	super();
 	this.noticeNo = noticeNo;
 	this.noticeType = noticeType;
@@ -39,7 +39,7 @@ public class Notice {
 	this.noticeContent = noticeContent;
 	this.noticeDate = noticeDate;
 	this.reference = reference;
-	this.status = status;
+	this.noticeStatus = noticeStatus;
 }
 
 
@@ -54,13 +54,12 @@ public class Notice {
 		this.reference = reference;
 	}
 	
-	public Notice(int noticeNo, String noticeType, String noticeTitle, Date noticeDate, String status) {
+	public Notice(int noticeNo, String noticeType, String noticeTitle, Date noticeDate) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeType = noticeType;
 		this.noticeTitle = noticeTitle;
 		this.noticeDate = noticeDate;
-		this.status = status;
 	}
 		
 
@@ -113,19 +112,19 @@ public class Notice {
 		this.reference = reference;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getNoticeStatus() {
+		return noticeStatus;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setNoticeStatus(String noticeStatus) {
+		this.noticeStatus = noticeStatus;
 	}
 
 	@Override
 	public String toString() {
 		return "Notice [noticeNo=" + noticeNo + ", noticeType=" + noticeType + ", noticeTitle=" + noticeTitle
 				+ ", noticeContent=" + noticeContent + ", noticeDate=" + noticeDate + ", reference=" + reference
-				+ ", status=" + status + "]";
+				+ ", noticeStatus=" + noticeStatus + "]";
 	}
 	
    

@@ -237,24 +237,4 @@ public class MemberService {
 		return m;
 	}
 	
-	/** 관리자 회원 등급 바꾸기
-	 * @param m
-	 * @return
-	 */
-	public int adminGrade(Member m) {
-		Connection conn = getConnection();
-		
-		int result = new MemberDao().adminGrade(conn, m);
-		
-		if(result > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		
-		close(conn);
-		
-		return result;
-	}
-	
 }

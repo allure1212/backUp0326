@@ -29,9 +29,7 @@
 		width:100%;
 		border-top:2px solid gray;
 		margin-top:2.5px;
-		border-collapse: collapse;
 	}
-	td{border-bottom: 1px solid gray;}
 	.listArea>tbody{
 		font-size:15px;
 	}
@@ -42,11 +40,6 @@
 	.listArea>tbody>tr:hover{
 		cursor:pointer;
 	}
-	.pagingArea>button{
-		width:30px;
-		height:30px;
-		text-weight:bold;
-	}
 </style>
 </head>
 <body>
@@ -55,8 +48,8 @@
 	<div class="outer">
 		<h2 align="left">분실물문의</h2>
 		<div align="right">
-			<button id="allBtn" onclick="replyAll();" type="button" style="border-radius:5px;">전체 보기</button>
-			<button id="noBtn" onclick="replyNo();" type="button" style="border-radius:5px;">답변미완료 보기</button>
+			<button onclick="replyAll();" type="button">전체 보기</button>
+			<button onclick="replyNo();" type="button">답변미완료 보기</button>
 		</div>
 		<table class="listArea">
 			<thead>
@@ -155,16 +148,12 @@
 		
 		function replyAll(){
 			$("#all").css("display","");
-			$("#allBtn").css("background","gray");	
 			$("#no").css("display","none");
-			$("#noBtn").css("background","white");
 		}
 		
 		function replyNo(){
 			$("#all").css("display","none");
-			$("#allBtn").css("background","white");
 			$("#no").css("display","");
-			$("#noBtn").css("background","gray");
 		}
 	</script>
 </body>

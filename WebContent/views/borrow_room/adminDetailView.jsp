@@ -105,7 +105,7 @@
 		</table>
 		
 		<div class="btns" align="right">
-			<button type="button" onclick="history.back(-1); style="border-radius:5px;"">뒤로가기</button>
+			<button type="button" onclick="history.back(-1);">뒤로가기</button>
 		</div>
 	</div>
 </body>
