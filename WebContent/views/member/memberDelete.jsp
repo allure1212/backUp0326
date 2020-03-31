@@ -27,11 +27,14 @@
 	font-family: "Noto Sans KR Light","Noto Sans CJK KR","Noto Sans KR",sans-serif;
 	font-weight: 300;
 }
+
+
 *, ::after, ::before {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
+
 a img, fieldset, img {
 	border: none;
 }
@@ -44,6 +47,7 @@ caption, legend {
 	clip: rect(1px, 1px, 1px, 1px);
 	clip: rect(1px, 1px, 1px, 1px);
 }
+
 body {
 	color: #666;
 	font-size: 16px;
@@ -52,6 +56,10 @@ body {
 	letter-spacing: -0.9px;
 	background-color: #fff;
 }
+
+
+
+
 .modal {
 	display: none;
 	position: relative;
@@ -65,10 +73,14 @@ body {
 .modal-sizeS {
 	width: 560px;
 }
+
 .modal .head {
 	position: relative;
 	margin: -8px 0 40px;
 }
+
+
+
 .pwd .title {
 	color: #222;
 	font-family: "Noto Sans KR Medium","Noto Sans KR",sans-serif;
@@ -81,6 +93,7 @@ body {
 	margin-top: 10px;
 	padding: 0;
 }
+
 .formField .btnWrap {
     margin-top: 20px;
     text-align: center;
@@ -93,7 +106,7 @@ body {
 	border: 1px solid #254069;
 	display: inline-block;
 	vertical-align: middle;
-	min-width: 90px;
+	min-width: 120px;
 	height: 40px;
 	margin: 0 3px;
 	padding: 0 20px;
@@ -104,6 +117,7 @@ body {
 	line-height: 38px;
 	cursor: pointer;
 }
+
 .button-color01 {
 	border-color: #3086c9;
 	color: #fff;
@@ -112,6 +126,7 @@ body {
 :first-child.button {
 	margin-left: 0px;
 }
+
 .pwd .button {
 	height: 30px;
 	line-height: 20px;
@@ -132,10 +147,12 @@ input[type=number], input[type=password], input[type=tel], input[type=text], sel
 	border: 1px solid #ddd;
 	color: #666;
 }
+
 .pwd .input {
 	width: 100%;
 	height: 50px;
 }
+
 .modal .head .title {
 	color: #000;
 	font-family: "Noto Sans KR Medium","Noto Sans KR",sans-serif;
@@ -147,31 +164,20 @@ input[type=number], input[type=password], input[type=tel], input[type=text], sel
     margin-top: 30px;
     font-weight: bolder;
 }
+
+
 </style>
 <script type="text/javascript">
     function cancle() {
 		location.href="mypage.me";
     }
 </script>
-<script>
-	var msg = "<%=msg%>";
-	
-	$(function(){
-		if(msg != "null"){
-			alert(msg);
-		}
-		
-		if(msg == "성공적으로 회원탈퇴 되었습니다."){
-			window.close();
-		}
-	});
-	
-</script>
+
 </head>
 <body>
 
-	<%@ include file="../common/myPagebar.jsp"%>
-
+    <%@ include file="../common/myPagebar.jsp"%>
+	
 	<div id="wrap">
 <section tabindex="0" class="modal modal-sizeS modal-findPwd" id="modalFindPwd" style="margin-left: -280px; display: block;">
 
@@ -191,15 +197,15 @@ input[type=number], input[type=password], input[type=tel], input[type=text], sel
 					<legend>회원탈퇴</legend>
 					<h2 class="title">회원탈퇴</h2>
 					<div class="item">
-						<input name="pwd" title="비밀번호" class="input" id="idPwd" type="password" placeholder="비밀번호">
+						<input name="pwd" title="비밀번호" class="input" id="idPwd" maxlength="20" type="password" placeholder="비밀번호">
                     </div>
                     <div class="item">
-						<input name="pwdChk" title="비밀번호 확인" class="input" id="idPwdChk" type="password" placeholder="비밀번호 확인">
+						<input name="pwdChk" title="비밀번호 확인" class="input" id="idPwdChk" maxlength="20" type="password" placeholder="비밀번호 확인">
 					</div>
 					<!-- btnWrap -->
 					<div class="btnWrap">
-                        <button class="button button-color01 block" id="idBtn" type="button" onclick="cancle()">취소</button>
-                        <button class="button button-color01 block" id="idBtn" type="submit">회원탈퇴</button>
+                        <button class="button button-color01 block" id="btnCancle" type="button" onclick="cancle()">취소</button>
+                        <button class="button button-color01 block" id="btnDelete" type="submit">회원탈퇴</button>
 					</div>
 					<!-- //btnWrap -->
 				</fieldset>
@@ -211,6 +217,8 @@ input[type=number], input[type=password], input[type=tel], input[type=text], sel
 
 
 <script>
+
+
 		function pwdValidate(){
 			// 각 input 요소 가져오기
 			var pwd = $("input[name='pwd']");
@@ -234,5 +242,17 @@ input[type=number], input[type=password], input[type=tel], input[type=text], sel
 		
 		
 </script>
+<script>
+	
+	var msg = "<%=msg%>";
+
+	$(function(){
+	
+		if(msg != "null"){
+			alert(msg);
+		}
+	});
+	
+</script>
 </body>
-</html> 
+</html>

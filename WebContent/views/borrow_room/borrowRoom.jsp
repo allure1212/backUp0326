@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList, com.kh.borrow_room.model.vo.*" %>
 <%
-	ArrayList<BorrowRoom> list = (ArrayList<BorrowRoom>)request.getAttribute("list");
+	ArrayList<BorrowRoom> list = (ArrayList<BorrowRoom>)request.getAttribute("bList");
 	
 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");

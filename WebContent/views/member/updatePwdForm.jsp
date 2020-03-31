@@ -17,10 +17,7 @@
 		if(msg != "null"){
 			alert(msg);
 		}
-		
-		if(msg == "성공적으로 회원탈퇴 되었습니다."){
-			window.close();
-		}
+
 	});
 	
 </script>
@@ -48,11 +45,14 @@
 	font-family: "Noto Sans KR Light","Noto Sans CJK KR","Noto Sans KR",sans-serif;
 	font-weight: 300;
 }
+
+
 *, ::after, ::before {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
+
 a img, fieldset, img {
 	border: none;
 }
@@ -65,6 +65,7 @@ caption, legend {
 	clip: rect(1px, 1px, 1px, 1px);
 	clip: rect(1px, 1px, 1px, 1px);
 }
+
 body {
 	color: #666;
 	font-size: 16px;
@@ -73,6 +74,10 @@ body {
 	letter-spacing: -0.9px;
 	background-color: #fff;
 }
+
+
+
+
 .modal {
 	display: none;
 	position: relative;
@@ -86,10 +91,14 @@ body {
 .modal-sizeS {
 	width: 560px;
 }
+
 .modal .head {
 	position: relative;
 	margin: -8px 0 40px;
 }
+
+
+
 .pwd .title {
 	color: #222;
 	font-family: "Noto Sans KR Medium","Noto Sans KR",sans-serif;
@@ -102,6 +111,7 @@ body {
 	margin-top: 10px;
 	padding: 0;
 }
+
 .formField .btnWrap {
     margin-top: 20px;
     text-align: center;
@@ -125,6 +135,7 @@ body {
 	line-height: 38px;
 	cursor: pointer;
 }
+
 .button-color01 {
 	border-color: #3086c9;
 	color: #fff;
@@ -133,6 +144,7 @@ body {
 :first-child.button {
 	margin-left: 0px;
 }
+
 .pwd .button {
 	height: 30px;
 	line-height: 20px;
@@ -153,10 +165,12 @@ input[type=number], input[type=password], input[type=tel], input[type=text], sel
 	border: 1px solid #ddd;
 	color: #666;
 }
+
 .pwd .input {
 	width: 100%;
 	height: 50px;
 }
+
 .modal .head .title {
 	color: #000;
 	font-family: "Noto Sans KR Medium","Noto Sans KR",sans-serif;
@@ -166,6 +180,7 @@ input[type=number], input[type=password], input[type=tel], input[type=text], sel
 }
 .warning {
     border: 1px solid #bcbcbc;
+
 }
 .essential {
     color: #db0000;
@@ -187,14 +202,16 @@ input[type=number], input[type=password], input[type=tel], input[type=text], sel
     font-weight: bolder;
     font-family:Verdana, Geneva, Tahoma, sans-serif
 }
+
 </style>
 <script>
+
 </script>
 </head>
 <body>
 
-	<%@ include file="../common/myPagebar.jsp"%>
-
+    <%@ include file="../common/myPagebar.jsp"%>
+	
 	<div id="wrap">
 <section tabindex="0" class="modal modal-sizeS modal-findPwd" id="modalFindPwd" style="margin-left: -280px; display: block;">
 
@@ -205,7 +222,7 @@ input[type=number], input[type=password], input[type=tel], input[type=text], sel
         <p class="title2">기존 비밀번호는 사용이 불가능하며, 새로운 비밀번호를 등록 후 사용해 주시기 바랍니다.</p>
         <div class="warning">
             <p><h4>※ 비밀번호 설정 안내 </h4>
-               비밀번호는 <span class="essential">6~10자의 영문, 숫자만 사용</span> 가능합니다.<br>
+               비밀번호는 <span class="essential">8~20자의 영문, 숫자만 사용</span> 가능합니다.<br>
                설정할 수 없는 비밀번호 조합 : <span class="essential">공백, 3자 이상 연속된 영문 혹은 숫자, 아이디에 포함된
                숫자/문자와 연속 3자 이상</span>
             </p>
@@ -221,13 +238,13 @@ input[type=number], input[type=password], input[type=tel], input[type=text], sel
 					<legend>비밀번호 변경</legend>
 					<h2 class="title">비밀번호 변경</h2>
 					<div class="item">
-						<input name="Pwd" title="기존 비밀번호" class="input" id="pwd" type="password" placeholder="기존 비밀번호">
+						<input name="Pwd" title="기존 비밀번호" class="input" id="pwd" maxlength="20" type="password" placeholder="기존 비밀번호">
 					</div>
 					<div class="item">
-						<input name="newPwd" title="새로운 비밀번호" class="input" id="newPwd" type="password" placeholder="새로운 비밀번호">
+						<input name="newPwd" title="새로운 비밀번호" class="input" id="newPwd" maxlength="20" type="password" placeholder="새로운 비밀번호">
                     </div>
                     <div class="item">
-						<input name="pwdChk" title="새로운 비밀번호 확인" class="input" id="newPwdChk" type="password" placeholder="새로운 비밀번호 확인">
+						<input name="pwdChk" title="새로운 비밀번호 확인" class="input" id="newPwdChk" maxlength="20" type="password" placeholder="새로운 비밀번호 확인">
 					</div>
 					<!-- btnWrap -->
 					<div class="btnWrap">
@@ -244,12 +261,15 @@ input[type=number], input[type=password], input[type=tel], input[type=text], sel
 
 
 <script>
+
+
 		function pwdValidate(){
 			// 각 input 요소 가져오기
 			var Pwd = $("input[name='Pwd']");
 			var newPwd = $("input[name='newPwd']");
 			var pwdChk = $("input[name='pwdChk']");
-			
+			var pwdForm = /^[A-Za-z0-9]{8,20}$/; // 비밀번호
+
 			
 			// 세 input 요소에 하나라도 누락되지 않았는지 검사
 			if(Pwd.val().trim() == "" || newPwd.val().trim() == "" || pwdChk.val().trim() == ""){
@@ -263,11 +283,17 @@ input[type=number], input[type=password], input[type=tel], input[type=text], sel
 				pwdChk.val("").focus();
 				return false;
 			}
+			
+			// 비밀번호 설정 조건
+			if(!pwdForm.test($("input[id=newPwd]").val())) {
+				alert("비밀번호는 영문 + 숫자 조합의 8자리 이상 20자 이하로 작성해 주세요.")	
+			    return false;
+			}
 	
 		}
 		
 		
 </script>
-
+	
 </body>
-</html> 
+</html>

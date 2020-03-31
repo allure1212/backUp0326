@@ -74,7 +74,7 @@
 							<a href="<%=request.getContextPath() %>/reserveDetail.do">예매확인</a>
 						</li>
 						<li>
-							<a href="#">관람한영화</a>
+							<a href="<%=request.getContextPath() %>/paymentDetail.do">관람한영화</a>
 						</li>
 					</ul>
             </li>

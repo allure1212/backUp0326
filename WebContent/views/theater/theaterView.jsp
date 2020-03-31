@@ -119,33 +119,46 @@
 
     <form id="form" action="<%=contextPath%>/detailView.th" method="post">
         <div>
-            <input type="hidden" name="sectionNo" value="<%= t.getSectionNo() %>"/>
-            <input type="hidden" name="theaterNo" value="<%= theaterNo %>"/>
+            <input type="hidden" name="theaterNo" value="<%=theaterNo%>"/>
         </div>
         <div class="timeTable">
             <p>Date: <input type="text" id="datepicker" name="screenDate" size="20" value="<%= screenDate %>" style="font-weight: 800;"/></p>
             <!-- 영화별 영화시간 나열 -->
             <% for(MovieDto md : movies) { %>
             <ul>
-            	<li><span class="grade_<%= md.getAgeLimit() %>"><%= md.getAgeLimit() %></span>
+            	<li>
+            		<span class="grade_<%= md.getAgeLimit() %>"><%= md.getAgeLimit() %></span>
             		<strong><%= md.getTitle() %></strong>
-            		<input type="hidden" name="movieNo" value="<%= md.getMovieNo() %>"/>
             	</li>
             
 				<% for(RoomDto rd : md.getRooms()){ %>
-	            <li><ul>
-	                <li><a href="#" onclick="selectMovie(this);">[<%= rd.getRoomName() %>관] <%= DateUtils.formatDate(rd.getScreenDate(),"hh:mm") %></a>
-	                	<input type="hidden" name="roomNo" value="<%= rd.getRoomNo() %>"/>
-	                	<input type="hidden" name="screenTime" value="<%= DateUtils.formatDate(rd.getScreenDate(),"yyyy-MM-dd HH:mm") %>"/>
-	                </li>
-	            </ul></li>
+	            <li>
+	            	<ul>
+	                	<li><a href="#" onClick="selectMovie(this);">[<%= rd.getRoomName() %>관] <%= DateUtils.formatDate(rd.getScreenDate(),"HH:mm") %></a>
+	                		<input type="hidden" name="roomNo" value="<%= rd.getRoomNo() %>"/>
+	                		<input type="hidden" name="screenTime" value="<%= DateUtils.formatDate(rd.getScreenDate(),"yyyy-MM-dd HH:mm") %>"/>
+	                		<input type="hidden" name="sectionNo" value="<%= t.getSectionNo() %>"/>
+            				<input type="hidden" name="movieNo" value="<%= md.getMovieNo()%>"/>
+	                	</li>
+	            	</ul>
+	            </li>
 	            <% } %>
 	         </ul>
+	         </form>
             <% } %>
         </div>
-
+        </div>
     </form>
 </div>  
+
+<form id="reserveInfo" action="<%=contextPath%>/detailView.th" method="post">
+	<input type="hidden" name="theaterNo" value="<%= theaterNo %>"/>
+	<input type="hidden" name="roomNo" value=""/>
+	<input type="hidden" name="screenTime" value=""/>
+	<input type="hidden" name="sectionNo" value=""/>
+	<input type="hidden" name="movieNo" value=""/>
+</form>
+
 
 <!-- The Modal -->
 <div class="modal modalTransport">
@@ -188,10 +201,24 @@ $('#datepicker').change(function(){
 });
 
 function selectMovie(movie){
-	var form = document.getElementById('form');
+	var form = document.getElementById('reserveInfo');
+	var roomNo = $(movie).siblings('input[name="roomNo"]').val();
+	var screenTime = $(movie).siblings('input[name="screenTime"]').val();
+	var sectionNo = $(movie).siblings('input[name="sectionNo"]').val();
+	var movieNo = $(movie).siblings('input[name="movieNo"]').val();
+	console.log(roomNo);
+	console.log(screenTime);
+	console.log(sectionNo);
+	console.log(movieNo);
+	
+	form.roomNo.value = roomNo;
+	form.screenTime.value = screenTime;
+	form.sectionNo.value = sectionNo;
+	form.movieNo.value = movieNo;
+	
 	form.action = '${contextPath}/reservedFour.do';
 	form.method = 'post';
-	form.submit(); //roonNo, screenDate, screenTime
+	form.submit(); //roomNo, screenDate, screenTime 
 }
 
 $('#transport').click(function(){

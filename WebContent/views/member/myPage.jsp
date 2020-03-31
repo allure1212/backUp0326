@@ -21,12 +21,74 @@ body {
   padding: 20px;
   border: none;
 }
-#jb-header {
+.jb-header {
   padding: 20px;
   margin-bottom: 20px;
   border: 1px solid #bcbcbc;
-  height:100px;
+  height: 220px;
+  border-radius: 20px;
+  background: -webkit-linear-gradient(18deg, rgb(208, 207, 200), rgb(255, 255, 255));
+  background: linear-gradient(18deg, rgb(208, 207, 200), rgb(255, 255, 255));
+  border-bottom: 10px solid; 
 }
+
+.userTitle {
+    margin-top: 30px;
+    text-align: center;
+	
+    
+}
+.userTitle h1 {
+	font-size:35px;
+	font-weight:bold;
+}
+.userTitle h3 {
+	font-size:25px;
+	font-weight:bold;
+	padding:30px;	
+}
+.userInfo{
+    font-size: 16px;
+    text-align: left;
+    letter-spacing: 3px;
+    word-spacing: 12px;
+    width: 500px;
+    margin: 0px auto;
+    font-weight:bold;
+	padding:6px;
+	padding-left:250px;
+	line-height:1.6em;
+}
+
+.btn_info{
+    float: right;
+    width: 200px;
+    margin-top: -65px;
+    margin-right: 20px;
+}
+
+.go_info {
+	width: 200px;
+	height: 50px;
+	background-color: #ff6b1b;
+	color: #fff;
+	letter-spacing: -1px;
+	font-size: 15px;
+	padding: 0;
+	text-align: left;
+    padding-left: 20px;
+    border-radius: 10px;
+}
+.go_info em {
+	margin-left: 10px;
+	position: absolute;
+	font-size: 26px;
+	transform: scale(0.5, 1);
+	font-weight: 100;
+	margin-top: -3px;
+}
+
+
 #jb-content {
   width: 450px;
   padding: 20px;
@@ -95,16 +157,30 @@ body {
 
 
   <div id="jb-container">
-        <div id="jb-header">
-          <h1>환영합니다!</h1>
+           <div class="jb-header">
+            <div class="userTitle">
+                <h1><%= loginUser.getName() %>님 반갑습니다!</h1>
+                <h3>회원님의 현재 등급은 '<%= loginUser.getGrade() %>' 입니다</h3>
+            </div>
+            <div class="userInfo">
+                <p> 아이디 : <%= loginUser.getId() %></p>
+                <p> 이름    : <%= loginUser.getName() %></p>
+                <p> 이메일 : <%= loginUser.getEmail() %></p>
+                <p> 휴대폰번호 : <%= loginUser.getPhone() %></p>
+            </div>
+            <div class="btn_info">
+                <button class="go_info" onclick="moveMyinfo();" type="button">회원정보수정 바로가기<em>&gt;</em></button>
+            </div>
         </div>
+        
         <div id="jb-content" style="text-align: center;">
-          <h2>예약정보</h2>
+          <h2>예매확인</h2>
           <%@ include file="../reserved/myPageReserved.jsp"%>
           
         </div>
+        
         <div id="jb-sidebar">
-          <h2>My 영화</h2>
+          <h2>관람한영화</h2>
           <%@ include file="../payment/myPayment.jsp"%>
         </div>
 
@@ -130,5 +206,11 @@ body {
 	  		</div>
   		</div>
       </div>
+      
+      <script>
+          	function moveMyinfo() {
+        location.href = "<%=contextPath%>/infoForm.me"
+         }
+      </script>
 </body>
 </html> 

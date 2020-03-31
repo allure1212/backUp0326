@@ -8,12 +8,9 @@
 				com.kh.common.DateUtils" %>
 
 <%
-	Integer loginNo = null;
-	if((Member)session.getAttribute("loginUser")==null) {
-		loginNo = 1;
-	}else {
-		loginNo = ((Member)session.getAttribute("loginUser")).getMemberNo();
-	}
+	
+	Integer loginNo = ((Member)session.getAttribute("loginUser")).getMemberNo();
+	
 	List<PaymentDto> pd = new PaymentService().watchedMovie(loginNo);
 %>    
     
@@ -25,8 +22,8 @@
 
   <style>
         *{margin:0; padding: 0;}
-        .layoutWatched { width: 300px; height: 300px;}
-        .watchedTable { overflow: hidden;}
+        .layoutWatched { height: 300px;}
+        .watchedTable { overflow: hidden; width:100%}
         .watchedTable img { width:150px; height: 100px; margin: 3px 25px;}
         .watchedTable p {text-align: center; font-size: 12px; font-weight: 800;} 
 		.layoutWatched table tr:hover { cursor: pointer;}
@@ -41,11 +38,11 @@
 </head>
 <body>
 <div class="layoutWatched">
-      <a href="<%=request.getContextPath() %>/reserveDetail.do">
+      <a href="<%=request.getContextPath() %>/paymentDetail.do">
         <table class="watchedTable">
         	<% if(pd.size() == 0){ %>
         	<tr>
-        		<td colspan="2">당신의 이야기를 채워주세요</td>
+        		<td colspan="2" style="text-align:center; padding-top:50px;">당신의 이야기를 채워주세요</td>
         	</tr>
         	<% } %>
         	<% if(pd.size() == 1){ %>

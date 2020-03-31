@@ -40,6 +40,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Menubar.jsp</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" /> 
 <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
 <script src="${contextPath}/resources/js/jquery-1.11.2.min.js"></script>
